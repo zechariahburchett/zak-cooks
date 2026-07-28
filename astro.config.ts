@@ -20,8 +20,7 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
 
 export default defineConfig({
-  site: 'https://zechariahburchett.github.io',
-  base: '/zak-cooks',
+  site: 'https://zakcooks.com',
   integrations: [
     mdx(),
     sitemap({
