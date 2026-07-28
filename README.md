@@ -27,3 +27,10 @@ This site is built with [Astro](https://astro.build) using a customized version 
 git add .
 git commit -m "Add new recipe: <Recipe Name>"
 git push origin main
+```
+---
+
+## 📄 License & Content Copyright
+
+* **Website Code & Theme:** Built with [AstroPaper](https://github.com/satnaing/astro-paper), licensed under the [MIT License](LICENSE).
+* **Recipes, Text & Images:** © 2026 Zechariah Burchett. All rights reserved.
