@@ -12,6 +12,8 @@ import LinkButton from "@/components/LinkButton.astro";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
+import { Image as AstroImage } from "astro:assets";
+import profilePic from "@/assets/images/ZakPhoto.jpg";
 
 const { socials, posts: postsConfig } = config;
 
@@ -34,12 +36,31 @@ const homePath = getRelativeLocaleUrl(locale, "");
     class="app-layout"
   >
 <section id="hero" class="border-border border-b pt-8 pb-6">
-  <p class="mb-4">
-    A simple family recipe collection.
-    <strong class="text-skin-accent font-bold block mt-2">
-      Free. No ads. No popups. No life stories to scroll through before getting to the recipe.
-    </strong>
-  </p>
+  {/* THIS FLEX CONTAINER WRAPS THE IMAGE AND TEXT TOGETHER */}
+  <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
+    
+    {/* THE CIRCULAR IMAGE */}
+    <div class="shrink-0">
+      <AstroImage 
+        src={profilePic} 
+        alt="Zak smiling"
+        width={112}
+        height={112}
+        class="rounded-full w-24 h-24 sm:w-28 sm:h-28 object-cover border-4 border-skin-accent"
+      />
+    </div>
+
+    {/* THE INTRODUCTORY TEXT */}
+    <div class="flex-1 text-center sm:text-left">
+      <p class="mb-4">
+        A simple family recipe collection.
+        <strong class="text-skin-accent font-bold block mt-2">
+          Free. No ads. No popups. No life stories to scroll through before getting to the recipe.
+        </strong>
+      </p>
+    </div>
+  </div>
+
   <p>
     Just home-tested, family-approved food cooked and served right in my own kitchen. If you like a recipe, feel free to <a href="https://buymeacoffee.com/zakcooks" target="_blank" rel="noopener noreferrer" class="text-skin-accent underline decoration-dashed underline-offset-4 hover:underline-offset-2">buy me a coffee</a>. No worries if you don't!
   </p>
