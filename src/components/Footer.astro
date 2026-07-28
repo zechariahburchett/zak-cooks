@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Socials from "./Socials.astro";
+import { useTranslations } from "@/i18n";
+
+type Props = {
+  noMarginTop?: boolean;
+} & HTMLAttributes<"footer">;
+
+const { noMarginTop = false, class: className, ...attrs } = Astro.props;
+
+const t = useTranslations(Astro.currentLocale);
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class:list={["app-layout", { "mt-auto": !noMarginTop }, className]}
+  {...attrs}
+>
+  <div
+    class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
+  >
+    <!-- <Socials /> -->
+      <div class="copyright-wrapper flex flex-col items-center justify-center sm:flex-row sm:gap-2">
+        <span>Copyright &#169; {currentYear} Zak Cooks</span>
+        <span class="hidden sm:inline">|</span>
+        <span>All rights reserved.</span>
+      </div>
+  </div>
+</footer>
