@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - soups
+  - dinners
 description: "A hearty, classic homemade chili with ground beef, green peppers, and sweet corn from Dad's kitchen."
 ---
 

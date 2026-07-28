@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - appetizers
+  - snacks
 description: "A classic, savory holiday cheese ball made with dried beef, cream cheese, and minced onion."
 ---
 

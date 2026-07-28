@@ -8,7 +8,6 @@ draft: false
 tags:
   - breakfast
   - slow-cooker
-  - american
 description: "An easy slow-cooker breakfast casserole made with hashbrowns, sausage, peppers, and cheese."
 ---
 
