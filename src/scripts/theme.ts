@@ -60,10 +60,27 @@ document.addEventListener("astro:before-swap", event => {
   }
 });
 
+// Flag to track printing status
+let isPrinting = false;
+window.addEventListener("beforeprint", () => {
+  isPrinting = true;
+});
+window.addEventListener("afterprint", () => {
+  setTimeout(() => {
+    isPrinting = false;
+  }, 500);
+});
+
 // Sync with OS-level dark/light preference changes.
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
-    themeValue = matches ? DARK : LIGHT;
-    persist();
+    // DO NOT change theme if the event was triggered by the print dialog
+    if (isPrinting) return;
+
+    // Only update if the user hasn't explicitly set a custom theme preference
+    if (!localStorage.getItem(THEME_KEY)) {
+      themeValue = matches ? DARK : LIGHT;
+      reflect(); // Reflect changes without calling persist() to avoid locking in localStorage
+    }
   });

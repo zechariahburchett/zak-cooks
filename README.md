@@ -2,7 +2,7 @@
 
 Welcome to the repository for **Zak Cooks**—a digital collection of tested family recipes, slow-cooker staples, holiday appetizers, and everyday cooking notes.
 
-👉 **Live Site:** [https://zechariahburchett.github.io/zak-cooks/](https://zechariahburchett.github.io/zak-cooks/)
+👉 **Live Site:** [https:zakcooks.com](https://zakcooks.com)
 
 ---
 

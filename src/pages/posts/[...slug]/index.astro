@@ -573,13 +573,45 @@ const ogImage = ogImageUrl
     text-align: left !important;
     margin-left: 0 !important;
   }
-    /* Reset background and optimize text color for paper */
-    body {
-      background: #ffffff !important;
+    @media print {
+    /* 1. Force black color on the body and all article text */
+    body,
+    #main-content,
+    #article,
+    #article * {
       color: #000000 !important;
-      font-size: 12pt !important;
-      line-height: 1.5 !important;
+      -webkit-text-fill-color: #000000 !important; /* Overrides WebKit text fills */
+      opacity: 1 !important; /* Prevents dimmed text styles */
     }
+
+    /* 2. Override Tailwind Prose CSS color variables */
+    #article {
+      --tw-prose-body: #000000 !important;
+      --tw-prose-headings: #000000 !important;
+      --tw-prose-lead: #000000 !important;
+      --tw-prose-links: #000000 !important;
+      --tw-prose-bold: #000000 !important;
+      --tw-prose-counters: #000000 !important;
+      --tw-prose-bullets: #000000 !important;
+      --tw-prose-hr: #000000 !important;
+      --tw-prose-quotes: #000000 !important;
+      --tw-prose-quote-borders: #000000 !important;
+      --tw-prose-captions: #000000 !important;
+      --tw-prose-code: #000000 !important;
+      --tw-prose-pre-code: #000000 !important;
+      --tw-prose-pre-bg: #ffffff !important;
+      --tw-prose-th-borders: #000000 !important;
+      --tw-prose-td-borders: #000000 !important;
+    }
+
+    /* 3. Force background to pure white and remove dark mode backgrounds */
+    html,
+    body,
+    main {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+    }
+  }
 
     /* Force full width and remove margins designed for screens */
     #main-content,
@@ -601,7 +633,9 @@ const ogImage = ogImageUrl
       page-break-inside: avoid;
       break-inside: avoid;
     }
-
+    header {
+    margin-bottom: 1.5rem !important; /* or padding-bottom: 1rem !important; */
+  }
     /* Ensure link URLs are clearly readable when printed */
     article a[href^="http"]:after {
       content: " (" attr(href) ")";
