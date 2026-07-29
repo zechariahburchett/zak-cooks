@@ -11,6 +11,7 @@ import LinkButton from "./LinkButton.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
+import SpatulaImage from "@/assets/icons/spatula.svg";
 
 const { site, features } = config;
 
@@ -55,7 +56,10 @@ const BUY_ME_A_COFFEE_URL = "https://buymeacoffee.com/zakcooks";
       href={getRelativeLocaleUrl(locale, "")}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
-      {site.title}
+      <div class="flex items-center gap-2">
+        <SpatulaImage id="spatula-icon" class="h-6 w-6" />
+        <span>{site.title}</span>
+      </div>
     </a>
     <nav
       id="nav-menu"

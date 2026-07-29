@@ -104,7 +104,9 @@ const ogImage = ogImageUrl
 >
   <Header />
 
+  <div class="print:hidden">
   <BackButton />
+  </div>
 
   <main
     id="main-content"
@@ -118,7 +120,7 @@ const ogImage = ogImageUrl
       {title}
     </h1>
 
-    <div class="my-2 flex items-center gap-2">
+    <div class="my-2 flex items-center gap-8">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
       <span
         aria-hidden="true"
@@ -130,6 +132,18 @@ const ogImage = ogImageUrl
         |
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+      <!-- Print Button -->
+  <button
+    type="button"
+    onclick="window.print()"
+    class="print:hidden text-muted-foreground hover:text-accent flex items-center gap-1 text-sm transition-colors"
+    aria-label="Print article"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+    </svg>
+    <span>Print</span>
+  </button>
     </div>
 
     <article
@@ -153,11 +167,17 @@ const ogImage = ogImageUrl
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
     </ul>
 
-    <ShareLinks />
 
+    <div class="print:hidden">
+      <ShareLinks />
+    </div>
     <hr class="my-8 border-dashed" />
 
-    <AdjacentPostNav {prevPost} {nextPost} />
+   
+
+    <div class="print:hidden">
+      <AdjacentPostNav {prevPost} {nextPost} />
+    </div>
   </main>
   <Footer />
 </PostLayout>
@@ -529,4 +549,67 @@ const ogImage = ogImageUrl
   document.addEventListener("astro:after-swap", () =>
     window.scrollTo({ left: 0, top: 0, behavior: "instant" })
   );
+
+
 </script>
+
+  <style is:global>
+  @media print {
+    /* Hide non-printable navigation & utility elements */
+    footer,
+    nav,
+    .progress-container,
+    .heading-link,
+    .copy-code,
+    button,
+    hr,
+    [aria-label*="Back"],
+    [aria-label*="Share"] {
+      display: none !important;
+    }
+    header,
+    header * {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+    /* Reset background and optimize text color for paper */
+    body {
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-size: 12pt !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Force full width and remove margins designed for screens */
+    #main-content,
+    article {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Prevent breaking page elements awkwardly across pages */
+    h1, h2, h3, h4, h5, h6 {
+      page-break-after: avoid;
+      break-after: avoid;
+      color: #000000 !important;
+    }
+
+    pre, blockquote, img, figure {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Ensure link URLs are clearly readable when printed */
+    article a[href^="http"]:after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+      color: #555555;
+    }
+    html {
+      zoom: 70%;
+    }
+  }
+</style>

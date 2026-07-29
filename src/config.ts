@@ -12,7 +12,7 @@ const DEFAULT_OG_IMAGE = "default-og.jpg";
 
 const config: ResolvedAstroPaperConfig = {
   site: {
-      url: "https://zechariahburchett.github.io",
+      url: "https://zakcooks.com",
             title: "Zak Cooks",
                   description: "A clean, print-friendly collection of favorite home recipes.",
                         author: "Zak",
