@@ -1,8 +1,8 @@
 ---
 author: Zak
 pubDatetime: 2026-07-27T08:00:00Z
-title: "Simple Crockpot Breakfast Casserole"
-postSlug: "crockpot-breakfast-casserole"
+title: "Zak's Crockpot Breakfast Casserole"
+postSlug: "zaks-crockpot-breakfast-casserole"
 featured: false
 draft: false
 tags:
